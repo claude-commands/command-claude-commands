@@ -18,14 +18,17 @@ ln -s <clone-path>/command-claude-commands/claude-commands.md ~/.claude/commands
 
 ### Interactive Mode
 
-Just run `/claude-commands` in Claude Code. It will detect whether you're a first-time user or have commands installed, and present appropriate options.
+Just run `/claude-commands` in Claude Code. It will detect whether you're a first-time user or have
+commands installed, and present appropriate options.
 
 **First-time users** see:
+
 - Install all commands
 - Select specific commands
 - Browse available commands
 
 **Returning users** see:
+
 - Add more commands
 - Update all
 - Remove commands
