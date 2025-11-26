@@ -7,9 +7,11 @@ This is the **meta-command** - install it once, then use it to discover, install
 ## Installation
 
 ```bash
-mkdir -p ~/projects/claude-commands ~/.claude/commands && \
-git clone git@github.com:claude-commands/command-claude-commands.git ~/projects/claude-commands/command-claude-commands && \
-ln -sf ~/projects/claude-commands/command-claude-commands/claude-commands.md ~/.claude/commands/claude-commands.md
+# Clone to your preferred location
+git clone git@github.com:claude-commands/command-claude-commands.git <clone-path>/command-claude-commands
+
+# Symlink (use full path to cloned repo)
+ln -s <clone-path>/command-claude-commands/claude-commands.md ~/.claude/commands/claude-commands.md
 ```
 
 ## Usage
@@ -71,10 +73,10 @@ Just run `/claude-commands` in Claude Code. It will detect whether you're a firs
 - [GitHub CLI](https://cli.github.com/) (`gh`) - authenticated
 - Git with SSH access to GitHub
 
-## Updating This Command
+## Updates
 
 ```bash
-cd ~/projects/claude-commands/command-claude-commands && git pull
+cd <clone-path>/command-claude-commands && git pull
 ```
 
 Or use another instance of `/claude-commands update` if you have other commands installed.

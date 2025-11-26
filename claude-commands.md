@@ -107,7 +107,7 @@ fi
 Use AskUserQuestion:
 - Question: "Where should commands be cloned?"
 - Options:
-  - `~/projects/claude-commands` - Standard projects location
+  - `~/code/claude-commands` - Code directory
   - `~/.local/share/claude-commands` - XDG data location
   - Other - Let user specify
 
@@ -359,7 +359,7 @@ AVAILABLE (not installed):
   /prune-worktree  - Clean up completed issue worktrees
   /codex           - Delegate a task to OpenAI Codex CLI
 
-Clone path: ~/projects/claude-commands
+Clone path: <clone-path>
 
 Run /claude-commands to install more commands.
 ```
