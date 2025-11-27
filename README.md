@@ -32,6 +32,7 @@ commands installed, and present appropriate options.
 - Add more commands
 - Update all
 - Remove commands
+- Move command (between scopes)
 - Show status
 
 ### Direct Commands
@@ -44,23 +45,62 @@ commands installed, and present appropriate options.
 | `/claude-commands remove <name>` | Remove a specific command |
 | `/claude-commands update` | Update all installed commands |
 | `/claude-commands list` | Show installed vs available commands |
+| `/claude-commands move <name>` | Move command between user and project levels |
+
+### Installation Scopes
+
+Commands can be installed at two levels:
+
+| Scope | Location | Availability |
+|-------|----------|--------------|
+| **User** | `~/.claude/commands/` | All projects (default) |
+| **Project** | `./.claude/commands/` | Current project only |
+
+**Single source of truth:** Command repos are always cloned to one global location. Only the symlinks
+differ based on scope. This means updates apply to all installations automatically.
+
+### Scope Flags
+
+Add `--user` or `--project` to any command:
+
+```bash
+# Install at user level (available everywhere)
+/claude-commands add start-issue --user
+
+# Install at project level (only this project)
+/claude-commands add start-issue --project
+
+# Move from user to project level
+/claude-commands move standup --project
+
+# Move from project to user level
+/claude-commands move standup --user
+```
+
+If no flag is provided and you're inside a project, you'll be asked which scope to use.
 
 ### Examples
 
 ```bash
-# Install all available commands
+# Install all available commands (asks for scope)
 /claude-commands install
 
-# Add just the start-issue command
+# Add just the start-issue command at user level
 /claude-commands add start-issue
 
-# Update all installed commands
+# Add standup for this project only
+/claude-commands add standup --project
+
+# Update all installed commands (both scopes)
 /claude-commands update
 
 # Remove a command
 /claude-commands remove codex
 
-# See what's installed
+# Move a command from user to project
+/claude-commands move explain --project
+
+# See what's installed at each level
 /claude-commands list
 ```
 
@@ -68,7 +108,8 @@ commands installed, and present appropriate options.
 
 1. **Zero config** - The command discovers where it's cloned by reading its own symlink
 2. **GitHub API** - Available commands are fetched live from the organization
-3. **Symlink-based installation** - Commands are cloned and symlinked to `~/.claude/commands/`
+3. **Symlink-based installation** - Commands are cloned once and symlinked to user or project level
+4. **Scope detection** - Automatically detects if you're in a project (git repository)
 
 ## Requirements
 
